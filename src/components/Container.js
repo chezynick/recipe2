@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import TileIcon from './TileIcon';
 const Container = ({ recipes }) => {
-	return <ContainerStyle>{recipes ? recipes.map((recipe) => <TileIcon recipe={recipe} />) : ''}</ContainerStyle>;
+	return (
+		<ContainerStyle>
+			{recipes ? recipes.map((recipe) => <TileIcon recipe={recipe} key={recipe.id} />) : ''}
+		</ContainerStyle>
+	);
 };
 
 export default Container;

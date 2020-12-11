@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import firebase from 'firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const TileIcon = ({ recipe }) => {
 	return (
-		<TileStyle>
+		<TileStyle key={recipe.id}>
 			<img src={recipe.image} alt={recipe.title} />
 			<InfoBox>
-				<FontAwesomeIcon icon={faInfoCircle} />
+				<FontAwesomeIcon color="#fb1970" icon={faInfoCircle} />
 				<h4>{recipe.title}</h4>
-				<FontAwesomeIcon icon={faTrashAlt} />
+				<FontAwesomeIcon color="#fb1970" icon={faTrashAlt} />
 			</InfoBox>
 		</TileStyle>
 	);
@@ -28,6 +27,10 @@ const TileStyle = styled.div`
 	margin: 3%;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
 	border-radius: 0.5rem;
+	@media (max-width: 600px) {
+		width: 100%;
+		margin: 5% auto;
+	}
 	img {
 		width: 100%;
 		height: 80%;

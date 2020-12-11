@@ -4,16 +4,16 @@ const GlobalStyles = createGlobalStyle`
 *{
     margin:0;
     padding:0;
-    
     box-sizing:border-box;
     font-family: 'Questrial', sans-serif;
-    color:#555555;
-
 }
 a{
     text-decoration:none;
     font-size:large;
     color:#555555;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 a:focus{
     text-decoration:none;

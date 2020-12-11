@@ -8,7 +8,7 @@ const Mains = ({ recipes }) => {
 	return (
 		<MainStyle>
 			{mains.map((recipe) => (
-				<TileIcon recipe={recipe} />
+				<TileIcon recipe={recipe} key={recipe.id} />
 			))}
 		</MainStyle>
 	);

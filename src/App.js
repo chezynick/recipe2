@@ -8,6 +8,7 @@ import Nav from './components/Nav';
 import Container from './components/Container';
 import Mains from './components/Mains';
 import Desserts from './components/Desserts';
+import Upload from './components/Upload';
 
 function App() {
 	//state settings
@@ -38,7 +39,7 @@ function App() {
 					<Route exact path="/" render={() => <Container recipes={recipes} />} />
 					<Route path="/mains" render={() => <Mains recipes={recipes} />} />
 					<Route path="/desserts" render={() => <Desserts recipes={recipes} />} />
-					<Route path="/" render={() => <Container recipes={recipes} />} />
+					<Route path="/upload" render={() => <Upload />} />
 				</Switch>
 				<GlobalStyles />
 			</div>

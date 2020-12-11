@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import firebase from './firebase';
+import GlobalStyles from './components/GlobalStyles';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	//state settings
+	const [recipes, setRecipes] = useState();
+	//get recipe info from firebase firestore
+	const data = firebase.firestore().collection('recipes');
+	const getRecipes = () => {
+		data.onSnapshot((querySnapshot) => {
+			const items = [];
+			querySnapshot.forEach((doc) => {
+				const actObj = doc.data();
+				actObj.id = doc.id;
+				items.push(actObj);
+			});
+
+			items.sort((a, b) => (a.title > b.title ? 1 : -1));
+			setRecipes(items);
+		});
+	};
+	useEffect(() => {
+		getRecipes();
+	}, []);
+	return (
+		<HashRouter basename="/">
+			<div className="App">
+				<GlobalStyles />
+			</div>
+		</HashRouter>
+	);
 }
 
 export default App;

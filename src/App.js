@@ -3,6 +3,12 @@ import firebase from './firebase';
 import GlobalStyles from './components/GlobalStyles';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
+//import components
+import Nav from './components/Nav';
+import Container from './components/Container';
+import Mains from './components/Mains';
+import Desserts from './components/Desserts';
+
 function App() {
 	//state settings
 	const [recipes, setRecipes] = useState();
@@ -27,6 +33,13 @@ function App() {
 	return (
 		<HashRouter basename="/">
 			<div className="App">
+				<Nav />
+				<Switch>
+					<Route exact path="/" render={() => <Container recipes={recipes} />} />
+					<Route path="/mains" render={() => <Mains recipes={recipes} />} />
+					<Route path="/desserts" render={() => <Desserts recipes={recipes} />} />
+					<Route path="/" render={() => <Container recipes={recipes} />} />
+				</Switch>
 				<GlobalStyles />
 			</div>
 		</HashRouter>

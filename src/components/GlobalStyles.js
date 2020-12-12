@@ -27,6 +27,12 @@ a:focus{
     height:30px;
     border-radius:0.5rem;
   }  
-
+button {
+  padding:0.5rem;
+  outline:none;
+  border:none;
+  border-radius:0.5rem;
+  cursor:pointer;
+}
 `;
 export default GlobalStyles;

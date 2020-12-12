@@ -34,14 +34,19 @@ const DeleteStyle = styled.div`
 	z-index: 10;
 	width: 100%;
 	top: 30%;
-	height: 100px;
+	height: auto;
 	background-color: #fb1970;
+	padding: 5% 0%;
 	color: white;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-items: center;
 	h3 {
-		padding: 1% 5%;
+		padding: 3% 5%;
+	}
+	button {
+		background-color: white;
+		color: #555555;
 	}
 `;

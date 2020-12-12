@@ -36,6 +36,7 @@ const NavStyle = styled.div`
 	background-color: white;
 	top: 0;
 	left: 0;
+	z-index: 20;
 	@media (max-width: 600px) {
 		flex-direction: column;
 		text-align: center;

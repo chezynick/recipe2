@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     padding:0;
     box-sizing:border-box;
     font-family: 'Questrial', sans-serif;
+    position: relative;
 }
 a{
     text-decoration:none;
@@ -19,7 +20,13 @@ a:focus{
     text-decoration:none;
     color:#555555;
 }
-    
+  textarea{
+      width:70%;
+      outline:none;
+    border:2px solid #fb1970;
+    height:30px;
+    border-radius:0.5rem;
+  }  
 
 `;
 export default GlobalStyles;

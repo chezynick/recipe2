@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+//import hidden boxes
+import DeleteConfirm from './DeleteConfirm';
 
 const TileIcon = ({ recipe }) => {
+	//state for box displays
+	const [deleteDisplay, setDeleteDisplay] = useState(false);
+	//button handlers
+	const deleteHandler = (recipe) => {
+		setDeleteDisplay(true);
+	};
+
 	return (
 		<TileStyle key={recipe.id}>
 			<img src={recipe.image} alt={recipe.title} />
 			<InfoBox>
 				<FontAwesomeIcon color="#fb1970" icon={faInfoCircle} />
 				<h4>{recipe.title}</h4>
-				<FontAwesomeIcon color="#fb1970" icon={faTrashAlt} />
+				<FontAwesomeIcon color="#fb1970" icon={faTrashAlt} onClick={() => deleteHandler(recipe)} />
 			</InfoBox>
+			{deleteDisplay ? <DeleteConfirm recipe={recipe} setDeleteDisplay={setDeleteDisplay} /> : ''}
 		</TileStyle>
 	);
 };

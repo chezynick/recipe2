@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TileIcon from './TileIcon';
 
 const Mains = ({ recipes }) => {
-	const mains = recipes.filter((recipe) => recipe.course === 'main' || recipe.course === 'mains');
+	const mains = recipes.filter((recipe) => recipe.course === true);
 
 	return (
 		<MainStyle>

@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import firebase from '../firebase';
+import { useHistory } from 'react-router-dom';
 
 const Upload = () => {
-	const [course, setCourse] = useState(false);
+	const [newCourse, setNewCourse] = useState(false);
 	const [newTitle, setNewTitle] = useState('');
 	const [newLink, setNewLink] = useState('');
 	const [newDescription, setNewDescription] = useState('');
 	const [newImage, setNewImage] = useState('');
-	const [newRecipe, setNewRecipe] = useState();
+
+	const [errors, setErrors] = useState({
+		titleError: '',
+		timeError: '',
+		elevationError: '',
+		distanceError: '',
+		imageError: '',
+	});
 	//event handlers
 	const clickHandler = () => {
-		setCourse(!course);
+		setNewCourse(!newCourse);
 	};
 	const titleHandler = (e) => {
 		setNewTitle(e.target.value);
@@ -25,23 +34,26 @@ const Upload = () => {
 		setNewImage(e.target.value);
 	};
 	//submit handler
+	const History = useHistory();
 	const submitHandler = () => {
-		let newCourse = '';
-		if (course === false) {
-			newCourse = 'mains';
+		if (newTitle === '' || newLink === '' || newImage === '') {
+			console.log('not correct');
+			let path = `/`;
+			History.push(path);
 		} else {
-			newCourse = 'dessert';
+			firebase.firestore().collection('recipes').add({
+				title: newTitle.toLowerCase(),
+				description: newDescription,
+				link: newLink,
+				image: newImage,
+				course: newCourse,
+			});
+
+			let path = `/`;
+			History.push(path);
 		}
-		setNewRecipe({
-			title: newTitle.toLowerCase(),
-			description: newDescription,
-			link: newLink,
-			image: newImage,
-			course: newCourse,
-		});
-		return newRecipe;
 	};
-	console.log(newRecipe);
+
 	return (
 		<UploadStyle>
 			<h3>Add your latest Recipe here...</h3>
@@ -54,8 +66,12 @@ const Upload = () => {
 				<textarea cols="20" rows="1" value={newLink} onChange={linkHandler}></textarea>
 				<h3>Image link :</h3>
 				<textarea cols="20" rows="1" value={newImage} onChange={imageHandler}></textarea>
-				{course ? <ButtonTrue>Mains</ButtonTrue> : <ButtonFalse onClick={clickHandler}>Mains</ButtonFalse>}
-				{course ? <ButtonFalse onClick={clickHandler}>Dessert</ButtonFalse> : <ButtonTrue>Dessert</ButtonTrue>}
+				{newCourse ? <ButtonTrue>Mains</ButtonTrue> : <ButtonFalse onClick={clickHandler}>Mains</ButtonFalse>}
+				{newCourse ? (
+					<ButtonFalse onClick={clickHandler}>Dessert</ButtonFalse>
+				) : (
+					<ButtonTrue>Dessert</ButtonTrue>
+				)}
 			</FormStyle>
 			<ButtonTrue onClick={submitHandler}>Add Recipe</ButtonTrue>
 		</UploadStyle>

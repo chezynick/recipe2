@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TileIcon from './TileIcon';
 
 const Desserts = ({ recipes }) => {
-	const desserts = recipes.filter((recipe) => recipe.course === 'dessert' || recipe.course === 'desserts');
+	const desserts = recipes.filter((recipe) => recipe.course === false);
 
 	return (
 		<Dessertstyle>

@@ -46,7 +46,7 @@ const DetailStyled = styled.div`
 		width: 90%;
 		height: auto;
 		border-radius: 0.5rem;
-		margin: 2% auto;
+		margin: 2%;
 	}
 `;
 const InfoBox = styled.div`

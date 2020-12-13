@@ -74,4 +74,7 @@ const Resultstyle = styled.div`
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	padding: 50px;
+	@media (max-width: 420px) {
+		padding: 0;
+	}
 `;

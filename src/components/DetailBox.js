@@ -31,8 +31,7 @@ const DetailStyled = styled.div`
 	width: 84%;
 	left: 8%;
 	top: 20%;
-	height: auto;
-
+	height: fit-content;
 	background-color: white;
 	color: #fb1970;
 	z-index: 10;
@@ -56,6 +55,15 @@ const DetailStyled = styled.div`
 		height: auto;
 		border-radius: 0.5rem;
 		margin: 2%;
+	}
+	@media (max-width: 450px) {
+		overflow: scroll;
+		top: 0%;
+		width: 100%;
+		padding: 10% 0%;
+		margin: 0;
+		left: 0;
+		z-index: 30;
 	}
 `;
 const InfoBox = styled.div`

@@ -53,6 +53,9 @@ const TileStyle = styled.div`
 		overflow: hidden;
 		border-top-left-radius: 0.5rem;
 		border-top-right-radius: 0.5rem;
+		@media (max-width: 450px) {
+			height: 330px;
+		}
 	}
 	h4 {
 		padding: 5px;

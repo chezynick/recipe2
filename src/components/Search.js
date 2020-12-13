@@ -6,7 +6,7 @@ const Search = ({ recipes }) => {
 	const [results, setResults] = useState(recipes);
 
 	const searchHandler = (e) => {
-		setSearch(e.target.value);
+		setSearch(e.target.value.toLowerCase());
 		const newArr = recipes.filter((recipe) => recipe.title.includes(search));
 		setResults(newArr);
 		return results;

@@ -19,11 +19,15 @@ const Search = ({ recipes }) => {
 		<SearchStyle>
 			<textarea placeholder="Search" value={search} cols="30" rows="1" onChange={searchHandler}></textarea>
 			<button onClick={clickHandler}>Clear Search</button>
-			<Resultstyle>
-				{results.map((recipe) => (
-					<TileIcon recipe={recipe} key={recipe.id} />
-				))}
-			</Resultstyle>
+			{results.length === 0 ? (
+				<h3>No Recipes match your search, sorry</h3>
+			) : (
+				<Resultstyle>
+					{results.map((recipe) => (
+						<TileIcon recipe={recipe} key={recipe.id} />
+					))}
+				</Resultstyle>
+			)}
 		</SearchStyle>
 	);
 };
@@ -58,6 +62,11 @@ const SearchStyle = styled.div`
 		color: white;
 		width: 150px;
 		margin-top: 50px;
+	}
+	h3 {
+		margin-top: 10%;
+		color: #555555;
+		opacity: 0.75;
 	}
 `;
 const Resultstyle = styled.div`

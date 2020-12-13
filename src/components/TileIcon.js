@@ -20,7 +20,7 @@ const TileIcon = ({ recipe }) => {
 
 	return (
 		<TileStyle key={recipe.id}>
-			<img src={recipe.image} alt={recipe.title} />
+			<img src={recipe.image} alt={recipe.title} onClick={detailHandler} />
 			<InfoBox>
 				<FontAwesomeIcon color="#fb1970" icon={faInfoCircle} onClick={detailHandler} />
 				<h4>{recipe.title}</h4>

@@ -10,7 +10,7 @@ const DetailBox = ({ recipe, setDetailDisplay }) => {
 	return (
 		<DetailStyled>
 			<div>
-				<img src={recipe.image} alt={recipe.title} />
+				<img src={recipe.image} onClick={clickHandler} alt={recipe.title} />
 			</div>
 			<InfoBox>
 				<h1>{recipe.title}</h1>
@@ -31,7 +31,7 @@ const DetailStyled = styled.div`
 	width: 84%;
 	left: 8%;
 	top: 20%;
-	height: fit-content;
+	height: auto;
 	background-color: white;
 	color: #fb1970;
 	z-index: 10;
@@ -52,9 +52,12 @@ const DetailStyled = styled.div`
 	}
 	img {
 		width: 90%;
-		height: auto;
+		height: 280px;
 		border-radius: 0.5rem;
 		margin: 2%;
+		@media (max-width: 450px) {
+			margin: 0%;
+		}
 	}
 	@media (max-width: 450px) {
 		overflow: scroll;
@@ -72,6 +75,9 @@ const InfoBox = styled.div`
 	justify-content: space-evenly;
 	height: 100%;
 	align-items: center;
+	h3 {
+		margin: 2%;
+	}
 	@media (max-width: 750px) {
 		padding: 10%;
 	}
@@ -82,7 +88,7 @@ const InfoBox = styled.div`
 		margin-right: auto;
 		margin-bottom: 20px;
 		h3 {
-			margin-bottom: 0;
+			margin: 0;
 		}
 	}
 `;

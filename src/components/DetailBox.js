@@ -42,6 +42,15 @@ const DetailStyled = styled.div`
 	align-items: auto;
 	overflow: hidden;
 	border-radius: 0.5rem;
+	@media (max-width: 750px) {
+		grid-template-columns: 1fr;
+		h1 {
+			margin-bottom: 20px;
+		}
+		h3 {
+			margin-bottom: 20px;
+		}
+	}
 	img {
 		width: 90%;
 		height: auto;
@@ -54,10 +63,18 @@ const InfoBox = styled.div`
 	flex-direction: column;
 	justify-content: space-evenly;
 	height: 100%;
+	align-items: center;
+	@media (max-width: 750px) {
+		padding: 10%;
+	}
 	a {
 		color: #fb1970;
 		flex-direction: row;
 		margin-left: auto;
 		margin-right: auto;
+		margin-bottom: 20px;
+		h3 {
+			margin-bottom: 0;
+		}
 	}
 `;

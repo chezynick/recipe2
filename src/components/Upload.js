@@ -114,6 +114,12 @@ const UploadStyle = styled.div`
 	border-radius: 0.5rem;
 	text-align: center;
 	color: #fb1970;
+	@media (max-width: 800px) {
+		margin-top: 15%;
+	}
+	@media (max-width: 600px) {
+		margin-top: 20%;
+	}
 `;
 const FormStyle = styled.div`
 	display: grid;
@@ -134,6 +140,10 @@ const FormStyle = styled.div`
 		margin: 0;
 		padding: 0;
 		opacity: 0.5;
+	}
+	@media (max-width: 750px) {
+		grid-template-columns: 1fr;
+		margin: 10% 0%;
 	}
 `;
 const ButtonTrue = styled.button`

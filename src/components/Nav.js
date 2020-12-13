@@ -14,6 +14,7 @@ const Nav = () => {
 				<Link to="/">Home {pathway.pathname === '/' ? <Line /> : <Linehidden />}</Link>
 				<Link to="/mains">Mains{pathway.pathname === '/mains' ? <Line /> : <Linehidden />}</Link>
 				<Link to="desserts">Desserts{pathway.pathname === '/desserts' ? <Line /> : <Linehidden />}</Link>
+				<Link to="/search">Search {pathway.pathname === '/search' ? <Line /> : <Linehidden />}</Link>
 				<Link to="/upload">
 					<FontAwesomeIcon icon={faPlusCircle} color="#fb1970" />
 					{pathway.pathname === '/upload' ? <Line /> : <Linehidden />}
@@ -37,7 +38,7 @@ const NavStyle = styled.div`
 	top: 0;
 	left: 0;
 	z-index: 20;
-	@media (max-width: 600px) {
+	@media (max-width: 700px) {
 		flex-direction: column;
 		text-align: center;
 	}
@@ -46,7 +47,7 @@ const NavStyle = styled.div`
 		font-family: 'Pacifico', cursive;
 		color: #fb1970;
 		padding-left: 10%;
-		@media (max-width: 600px) {
+		@media (max-width: 700px) {
 			padding: 0;
 		}
 	}
@@ -57,7 +58,7 @@ const LinkBox = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	@media (max-width: 600px) {
+	@media (max-width: 700px) {
 		width: 90%;
 		margin: auto;
 		padding-right: 0;

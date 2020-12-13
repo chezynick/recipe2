@@ -22,7 +22,7 @@ const Upload = () => {
 	};
 	const titleHandler = (e) => {
 		setNewTitle(e.target.value);
-		if (e.target.value.length < 5 || e.target.value.length > 20) {
+		if (e.target.value.length < 5 || e.target.value.length > 50) {
 			setErrors({ titleError: 'Must be between 5 and 20 characters' });
 		} else {
 			setErrors({});

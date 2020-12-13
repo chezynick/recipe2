@@ -49,7 +49,7 @@ const TileStyle = styled.div`
 	}
 	img {
 		width: 100%;
-		height: 80%;
+		height: 280px;
 		overflow: hidden;
 		border-top-left-radius: 0.5rem;
 		border-top-right-radius: 0.5rem;

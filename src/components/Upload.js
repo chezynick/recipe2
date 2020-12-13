@@ -12,9 +12,8 @@ const Upload = () => {
 
 	const [errors, setErrors] = useState({
 		titleError: '',
-		timeError: '',
-		elevationError: '',
-		distanceError: '',
+		descriptionError: '',
+		linkError: '',
 		imageError: '',
 	});
 	//event handlers
@@ -23,24 +22,41 @@ const Upload = () => {
 	};
 	const titleHandler = (e) => {
 		setNewTitle(e.target.value);
+		if (e.target.value.length < 5 || e.target.value.length > 20) {
+			setErrors({ titleError: 'Must be between 5 and 20 characters' });
+		} else {
+			setErrors({});
+		}
 	};
 	const descriptionHandler = (e) => {
 		setNewDescription(e.target.value);
+		if (e.target.value.length < 5 || e.target.value.length > 100) {
+			setErrors({ descriptionError: 'Must be between 5 and 100 characters' });
+		} else {
+			setErrors({});
+		}
 	};
 	const linkHandler = (e) => {
 		setNewLink(e.target.value);
+		if (e.target.value.length < 20) {
+			setErrors({ linkError: 'Must be a valid url' });
+		} else {
+			setErrors({});
+		}
 	};
 	const imageHandler = (e) => {
 		setNewImage(e.target.value);
+		if (e.target.value.length < 20) {
+			setErrors({ imageError: 'Must be a valid image link' });
+		} else {
+			setErrors({});
+		}
 	};
 	//submit handler
 	const History = useHistory();
+
 	const submitHandler = () => {
-		if (newTitle === '' || newLink === '' || newImage === '') {
-			console.log('not correct');
-			let path = `/`;
-			History.push(path);
-		} else {
+		if (errors === {}) {
 			firebase.firestore().collection('recipes').add({
 				title: newTitle.toLowerCase(),
 				description: newDescription,
@@ -48,9 +64,10 @@ const Upload = () => {
 				image: newImage,
 				course: newCourse,
 			});
-
 			let path = `/`;
 			History.push(path);
+		} else {
+			alert('Complete the form in full');
 		}
 	};
 
@@ -60,12 +77,20 @@ const Upload = () => {
 			<FormStyle>
 				<h3>Title :</h3>
 				<textarea cols="20" rows="1" value={newTitle} onChange={titleHandler}></textarea>
+				<p></p>
+				<p>{errors.titleError}</p>
 				<h3>Description :</h3>
 				<textarea cols="20" rows="1" value={newDescription} onChange={descriptionHandler}></textarea>
+				<p></p>
+				<p>{errors.descriptionError}</p>
 				<h3>Link :</h3>
 				<textarea cols="20" rows="1" value={newLink} onChange={linkHandler}></textarea>
+				<p></p>
+				<p>{errors.linkError}</p>
 				<h3>Image link :</h3>
 				<textarea cols="20" rows="1" value={newImage} onChange={imageHandler}></textarea>
+				<p></p>
+				<p>{errors.imageError}</p>
 				{newCourse ? <ButtonTrue>Mains</ButtonTrue> : <ButtonFalse onClick={clickHandler}>Mains</ButtonFalse>}
 				{newCourse ? (
 					<ButtonFalse onClick={clickHandler}>Dessert</ButtonFalse>
@@ -94,6 +119,7 @@ const FormStyle = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-row-gap: 20px;
+	grid-template-columns: repeat(auto, 1fr);
 	width: 100%;
 	height: 100%;
 	text-align: center;
@@ -103,6 +129,11 @@ const FormStyle = styled.div`
 		margin: auto;
 		text-align: center;
 		font-size: larger;
+	}
+	p {
+		margin: 0;
+		padding: 0;
+		opacity: 0.5;
 	}
 `;
 const ButtonTrue = styled.button`

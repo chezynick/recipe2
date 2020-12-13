@@ -56,19 +56,15 @@ const Upload = () => {
 	const History = useHistory();
 
 	const submitHandler = () => {
-		if (errors === {}) {
-			firebase.firestore().collection('recipes').add({
-				title: newTitle.toLowerCase(),
-				description: newDescription,
-				link: newLink,
-				image: newImage,
-				course: newCourse,
-			});
-			let path = `/`;
-			History.push(path);
-		} else {
-			alert('Complete the form in full');
-		}
+		firebase.firestore().collection('recipes').add({
+			title: newTitle.toLowerCase(),
+			description: newDescription,
+			link: newLink,
+			image: newImage,
+			course: newCourse,
+		});
+		let path = `/`;
+		History.push(path);
 	};
 
 	return (

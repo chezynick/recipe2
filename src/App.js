@@ -31,7 +31,7 @@ function App() {
 	};
 	useEffect(() => {
 		getRecipes();
-	}, []);
+	});
 	return (
 		<HashRouter basename="/">
 			<div className="App">

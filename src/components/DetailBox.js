@@ -2,15 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import TomatoesImage from '../defaultImage/tomatoes.jpeg';
 
 const DetailBox = ({ recipe, setDetailDisplay }) => {
 	const clickHandler = () => {
 		setDetailDisplay(false);
 	};
+	const imageOnLoadHandler = (event) => {		
+    if (event.currentTarget.className !== "error") {
+      event.currentTarget.className = "success";
+    }
+}
+	const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = TomatoesImage;
+    event.currentTarget.className = "error";
+};
 	return (
 		<DetailStyled>
 			<div>
-				<img src={recipe.image} onClick={clickHandler} alt={recipe.title} />
+				<img style={{ objectFit: 'cover' }} onLoad={imageOnLoadHandler}
+   onError={imageOnErrorHandler} src={recipe.image} onClick={clickHandler} alt={TomatoesImage} />
 			</div>
 			<InfoBox>
 				<h1>{recipe.title}</h1>

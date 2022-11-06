@@ -5,6 +5,8 @@ import { faTrashAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 //import hidden boxes
 import DeleteConfirm from './DeleteConfirm';
 import DetailBox from './DetailBox';
+import TomatoesImage from '../defaultImage/tomatoes.jpeg';
+
 
 const TileIcon = ({ recipe }) => {
 	//state for box displays
@@ -17,10 +19,20 @@ const TileIcon = ({ recipe }) => {
 	const detailHandler = () => {
 		setDetailDisplay(true);
 	};
+	const imageOnLoadHandler = (event) => {		
+    if (event.currentTarget.className !== "error") {
+      event.currentTarget.className = "success";
+    }
+}
+	const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = TomatoesImage;
+    event.currentTarget.className = "error";
+};
 
 	return (
 		<TileStyle key={recipe.id}>
-			<img src={recipe.image} alt={recipe.title} onClick={detailHandler} />
+			<img src={recipe.image}  onLoad={imageOnLoadHandler}
+   onError={imageOnErrorHandler} alt={recipe.title} onClick={detailHandler} />
 			<InfoBox>
 				<FontAwesomeIcon color="#fb1970" icon={faInfoCircle} onClick={detailHandler} />
 				<h4>{recipe.title}</h4>

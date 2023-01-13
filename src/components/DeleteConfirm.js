@@ -7,14 +7,14 @@ const DeleteConfirm = ({ recipe, setDeleteDisplay }) => {
 		setDeleteDisplay(false);
 	};
 	const confirmHandler = () => {
-		firebase
-			.firestore()
-			.collection('recipes')
-			.doc(recipe.id)
-			.delete()
-			.catch(function (error) {
-				console.error('Error writing document: ', error);
-			});
+		// firebase
+		// 	.firestore()
+		// 	.collection('recipes')
+		// 	.doc(recipe.id)
+		// 	.delete()
+		// 	.catch(function (error) {
+		// 		console.error('Error writing document: ', error);
+		// 	});
 		setDeleteDisplay(false);
 	};
 

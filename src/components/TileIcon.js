@@ -5,7 +5,7 @@ import { faTrashAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 //import hidden boxes
 import DeleteConfirm from './DeleteConfirm';
 import DetailBox from './DetailBox';
-import TomatoesImage from '../defaultImage/tomatoes.jpeg';
+import TomatoesImage from '../defaultImage/tomatoes.png';
 
 
 const TileIcon = ({ recipe }) => {

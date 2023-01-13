@@ -10,13 +10,14 @@ const Upload = () => {
 	const History = useHistory();
 
 	const submitHandler = (values) => {
-		firebase.firestore().collection('recipes').add({
-			title: values.title.toLowerCase(),
-			description: values.description,
-			link: values.linkAddress,
-			image: values.imageAddress,
-			course: values.course,
-		});
+		// firebase.firestore().collection('recipes').add({
+		// 	title: values.title.toLowerCase(),
+		// 	description: values.description,
+		// 	link: values.linkAddress,
+		// 	image: values.imageAddress,
+		// 	course: values.course,
+		// });
+		alert('Upload is currently disabled')
 		let path = `/`;
 		History.push(path);
 	};

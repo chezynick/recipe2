@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import firebase from '../firebase';
-import { useHistory } from 'react-router-dom';
-import { Formik, Field, Form } from 'formik';
+// import firebase from '../firebase';
+// import { useHistory } from 'react-router-dom';
+// import { Formik, Field, Form } from 'formik';
 // import * as Yup from 'yup'
 
 const Upload = () => {
 	//submit handler
-	const History = useHistory();
+	// const History = useHistory();
+	
 
-	const submitHandler = (values) => {
+	// const submitHandler = (values) => {
 		// firebase.firestore().collection('recipes').add({
 		// 	title: values.title.toLowerCase(),
 		// 	description: values.description,
@@ -17,10 +18,10 @@ const Upload = () => {
 		// 	image: values.imageAddress,
 		// 	course: values.course,
 		// });
-		alert('Upload is currently disabled')
-		let path = `/`;
-		History.push(path);
-	};
+	// 	alert('Upload is currently disabled')
+	// 	let path = `/`;
+	// 	History.push(path);
+	// };
 	
 // const validationSchema = Yup.object().shape({
 // 	title: Yup.string().max(50).min(5).required('Please give your recipe a title')
@@ -28,10 +29,11 @@ const Upload = () => {
 
 	return (
 		<UploadStyle>
-			 <Formik
+			<h1>Uploading new recipes is temporarily disabled, sorry!</h1>
+			  {/* <Formik
        initialValues={{ title:'' , description: '', linkAddress: '', imageAddress: ''}}
        onSubmit={submitHandler}>
-       {/* validationSchema={validationSchema} */}
+        validationSchema={validationSchema} 
 			{({ values, resetForm })  => (
 			<Form>
 				<h3>Add your latest Recipe here...</h3>
@@ -71,22 +73,22 @@ const Upload = () => {
 			</ButtonGroup>
 			</Form>)}
 			
-			</Formik>
+			</Formik>  */}
 		</UploadStyle>
 	);
 };
 
 export default Upload;
-const FormRow = styled.div `   
-margin:2% 25%;
-width:50%;
-height:30px;
-padding:0 5%;
-display:flex;
-flex-direction: row;
-justify-content:space-between;
+// const FormRow = styled.div `   
+// margin:2% 25%;
+// width:50%;
+// height:30px;
+// padding:0 5%;
+// display:flex;
+// flex-direction: row;
+// justify-content:space-between;
 
-`
+// `
 const UploadStyle = styled.div`
 	margin: 10% auto;
 	padding: 3%;
@@ -128,24 +130,24 @@ const UploadStyle = styled.div`
 // 		margin: 10% 0%;
 // 	}
 // `;
-const ButtonGroup = styled.div `  
-width:80%;
-display: flex;
-justify-content:space-evenly;
-margin-left:10%;
-`
-const ButtonTrue = styled.button`
-	width: 30%;
-	background-color: #fb1970;
-	color: white;
-	margin: auto;
-	font-size: larger;
-`;
-const ButtonFalse = styled.button`
-	width: 30%;
-	background-color: lightgray;
-	color: #555555;
-	opacity: 0.5;
-	font-size: larger;
-	margin: auto;
-`;
+// const ButtonGroup = styled.div `  
+// width:80%;
+// display: flex;
+// justify-content:space-evenly;
+// margin-left:10%;
+// `
+// const ButtonTrue = styled.button`
+// 	width: 30%;
+// 	background-color: #fb1970;
+// 	color: white;
+// 	margin: auto;
+// 	font-size: larger;
+// `;
+// const ButtonFalse = styled.button`
+// 	width: 30%;
+// 	background-color: lightgray;
+// 	color: #555555;
+// 	opacity: 0.5;
+// 	font-size: larger;
+// 	margin: auto;
+// `;
